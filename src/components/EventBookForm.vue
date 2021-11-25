@@ -57,8 +57,10 @@
               {{ 'Name of Attandee: ' + attandee }} <span class="red--text"><strong>*</strong></span>
             </template>
           ></v-text-field>
-
-          <v-btn color="success" class="mr-4" @click="submit"> Submit </v-btn>
+          
+          <v-btn color="success" class="mr-4" @click="submit" :disabled="disbaled"> Submit </v-btn>
+          <v-btn color="warning" class="mr-4" @click="$router.go(-1)" :disabled="disbaled">Cancel</v-btn>
+          <v-btn class="mr-4" @click="$router.go(-1)">Go Back</v-btn>
         </v-form>
       </v-col>
     </v-row>
@@ -72,6 +74,7 @@ export default Vue.extend({
   name: 'BookEventForm',
   props: ['event'],
   data: () => ({
+    disbaled: false,
     showAlert: false,
     valid: true,
     name: '',
@@ -104,7 +107,9 @@ export default Vue.extend({
     submit () {
       const error = (this.$refs.form as Vue & { validate: () => boolean }).validate()
       if (error) {
+        this.disbaled = true
         this.showAlert = true
+        this.$vuetify.goTo(0)
         this.updateEventData({ id: this.$route.params.id, noOfslotToBook: this.noOfAttandee })
         setTimeout(() => {
           this.$router.push('/')

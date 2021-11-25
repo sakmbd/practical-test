@@ -5,7 +5,9 @@
         {{ event.name }}
       </v-card-title>
       <v-row>
-        <v-col cols="12" class="text-center">{{ event.eventDate }}</v-col>
+        <v-col cols="12" class="text-center">
+          {{ event.eventDate }}
+        </v-col>
         <v-col cols="12" class="text-center">Ticket Available: {{ event.ticketAvailable }}</v-col>
       </v-row>
       <v-card-text>
