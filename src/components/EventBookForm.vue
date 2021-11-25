@@ -69,7 +69,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapGetters, mapMutations } from 'vuex'
+import { mapMutations } from 'vuex'
 export default Vue.extend({
   name: 'BookEventForm',
   props: ['event'],
@@ -92,8 +92,8 @@ export default Vue.extend({
     phoneRules: [
       (v: any) => !!v || 'Phone Number is required'
     ],
-    select: '1',
-    items: ['1', '2', '3', '4', '5'],
+    select: 1,
+    items: [1, 2, 3, 4, 5, 6],
     nameOfAttendee: {},
     nameOfAttendeeRules: [
       (v: any) => !!v || 'Phone Number is required'
@@ -120,6 +120,15 @@ export default Vue.extend({
   watch: {
     select (nV, oV) {
       this.noOfAttandee = parseInt(nV, 10)
+    }
+  },
+  created () {
+    let array = []
+    if ( this.event.ticketAvailable < 6) {
+      for(let i = 1; i <= this.event.ticketAvailable; i++) {
+        array.push(i)
+      }
+      this.items = array
     }
   }
 })
