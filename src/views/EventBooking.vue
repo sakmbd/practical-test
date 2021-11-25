@@ -1,15 +1,15 @@
 <template>
-  <list />
+  <book-event></book-event>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import List from '../components/List.vue'
+import BookEvent from '../components/BookEvent.vue'
 
 export default Vue.extend({
   name: 'Home',
   components: {
-    List
+    BookEvent
   }
 })
 </script>

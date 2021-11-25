@@ -1,32 +1,56 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <v-app id="inspire">
+      <v-navigation-drawer
+        v-model="drawer"
+        :clipped="$vuetify.breakpoint.lgAndUp"
+        app
+      >
+        <v-list dense>
+          <template v-for="item in items">
+            <v-list-item :key="item.text" :to="item.link" link>
+              <v-list-item-action>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>
+                  {{ item.text }}
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+        </v-list>
+      </v-navigation-drawer>
+      <v-app-bar
+        :clipped-left="$vuetify.breakpoint.lgAndUp"
+        app
+        color="blue darken-3"
+        dark
+      >
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
+          <span class="hidden-sm-and-down">Practical Test</span>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+      </v-app-bar>
+      <v-main>
+        <v-container fluid>
+          <v-row align="center" justify="center">
+            <router-view></router-view>
+          </v-row>
+        </v-container>
+      </v-main>
+    </v-app>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+export default {
+  data: () => ({
+    drawer: null,
+    items: [
+      { icon: 'list', text: 'Event List', link: '/' }
+    ]
+  })
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>

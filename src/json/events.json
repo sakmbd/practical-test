@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Understating Color",
+    "imgUrl": "https://cdn.vuetifyjs.com/images/cards/cooking.png",
+    "eventDate": "21 Sep 2021",
+    "ticketAvailable": 10
+  },
+  {
+    "id": 2,
+    "name": "Practo Design",
+    "imgUrl": "https://nearmetrade.com/local/public/vendor/event-noida2.jpg",
+    "eventDate": "21 Dec 2021",
+    "ticketAvailable": 5
+  },
+  {
+    "id": 3,
+    "name": "RGD Design",
+    "imgUrl": "https://images.shiksha.com/mediadata/images/articles/1583747992phpzaxKKK.jpeg",
+    "eventDate": "21 Jan 2022",
+    "ticketAvailable": 0
+  }
+]
